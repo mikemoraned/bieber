@@ -32,7 +32,7 @@ function BieberAppModel() {
     this.haveValidUserAge = ko.observable(false);
     this.validUserAge = ko.computed(function() {
 	var validAge = parseFloat(this.userAge());
-	if (validAge) {
+	if (validAge && validAge > 0) {
 	    this.haveValidUserAge(true);
 	    return validAge;
 	} else {
