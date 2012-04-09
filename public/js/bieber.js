@@ -51,5 +51,4 @@ function BieberAppModel() {
     }, this);
 }
 
-var model = new BieberAppModel();
-ko.applyBindings(model);
+ko.applyBindings(new BieberAppModel());

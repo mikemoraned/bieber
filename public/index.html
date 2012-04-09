@@ -16,12 +16,6 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
   <body>
@@ -32,21 +26,21 @@
 	  <h1 id="search"><code>define bieber</code></h1>
 	</div>
       </div>
-      <div class="row choice">
+      <div class="row">
 	<div class="span4 offset2">
 	  <p>Some people have recently been using a 'bieber' as a unit of time, based on Mr Biebers current age (<span data-bind="text: bieberAge"></span>).</p>
 	  <p>For example, how old are you? <input data-bind="value: userAge" /></p>
-	  <div data-bind="visible: haveValidUserAge">
-	    <p>By the above definition, you are <span data-bind="text: userAgeInBigBiebers"></span> biebers old</p>
+	  <div data-bind="visible: haveValidUserAge" class="alert alert-info">
+	    <p>By the above definition, you are <span data-bind="text: userAgeInBigBiebers"></span> bieber<span data-bind="visible: (userAgeInBigBiebers() > 1)">s</span> old</p>
 	  </div>
 	</div>
 	<div class="span4">
 	  <p>However, I far prefer a more experimentally determined definition: </p>
 	  <p>Currently, the word "bieber" is mentioned on twitter approximately once every <span data-bind="text: bieberRate"></span> seconds. Let's call this the bieber-rate.</p>
-	  <div data-bind="visible: haveValidUserAge">
+	  <div data-bind="visible: haveValidUserAge" class="alert alert-info">
 	    <p>By the above definition, your age is around <span data-bind="text: Math.floor(userAgeInMiniBiebers().value)"></span> <span data-bind="text: userAgeInMiniBiebers().unit"></span>biebers.
+	    </p>
 	  </div>
-	  </p>
 	</div>
       </div>
       <div class="row" data-bind="visible: haveValidUserAge">
@@ -57,10 +51,21 @@
 	  <p>I call this the <em>SI Bieber definition</em></p>
 	</div>
       </div>
-      <div class="row choice">
+      <div class="row">
 	<div class="span12">
 	  <h1 id="question">Which do you prefer?</h1>
-	  
+	  <div class="row">
+	    <div class="span4 offset2" style="text-align: right">
+	      <p>
+	      <a href="http://clicktotweet.com/2q6af" class="btn btn-primary btn-large">Tweet #bigbieber</a>
+	      </p>
+	    </div>
+	    <div class="span6">
+	      <p>
+		<a href="http://clicktotweet.com/hL3tC" class="btn btn-primary btn-large">Tweet #sibieber</a>
+	      </p>
+	    </div>
+	  </div>
 	</div>
       </div>
     </div> <!-- /container -->
