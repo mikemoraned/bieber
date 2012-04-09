@@ -29,14 +29,14 @@
 	<div class="span4 offset4" style="text-align: justify">
 	  <p>Some people have recently been using a 'bieber' as a unit of time, based on Mr Biebers current age (<span data-bind="text: bieberAge"></span>). I call this the <em>Mr Bieber definition</em>.</p>
 	  <p>To illustrate, how old are you? <br /><input data-bind="value: userAge" placeholder="Your age in years"/></p>
-	  <div data-bind="visible: haveValidUserAge" class="alert alert-info">
-	    <p>By the above definition, you are <span data-bind="text: userAgeInBigBiebers"></span> bieber<span data-bind="visible: (userAgeInBigBiebers() !== 1)">s</span> old. <span data-bind="visible: (userAgeInBigBiebers() > 2)">Depressing, no?</span></p>
+	  <div data-bind="visible: haveValidUserAge" style="display: none" class="alert alert-info">
+	    <p>By the above definition, you are around <span data-bind="text: userAgeInBigBiebers"></span> bieber<span data-bind="visible: (userAgeInBigBiebers() !== 1)">s</span> old. <span data-bind="visible: (userAgeInBigBiebers() > 2)">Depressing, no?</span></p>
 	  </div>
 
 	  <p>I far prefer a more experimentally determined definition: </p>
 	  <p>Currently, the word "bieber" is mentioned on twitter roughly once every <span data-bind="text: bieberRate"></span> seconds. Let's say this corresponds to a single bieber-unit.</p>
 	  <p>We can then build up larger time intervals using standard SI units. I call this the <em>SI Bieber definition</em>.</p>
-	  <div data-bind="visible: haveValidUserAge" class="alert alert-info">
+	  <div data-bind="visible: haveValidUserAge" style="display: none" class="alert alert-info">
 	    <p>By the above definition, your age is around <span data-bind="text: Math.floor(userAgeInMiniBiebers().value)"></span> <span data-bind="text: userAgeInMiniBiebers().unit"></span>biebers.
 	    </p>
 	  </div>
