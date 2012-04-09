@@ -36,14 +36,16 @@
 	<div class="span4 offset2">
 	  <p>Some people have recently been using a 'bieber' as a unit of time, based on Mr Biebers current age (<span data-bind="text: bieberAge"></span>).</p>
 	  <p>For example, how old are you? <input data-bind="value: userAge" /></p>
-	  <p>By this definition, you are <span data-bind="text: userAgeInBigBiebers"></span> biebers old</p>
+	  <div data-bind="visible: haveBigBieberAge">
+	    <p>By this definition, you are <span data-bind="text: userAgeInBigBiebers"></span> biebers old</p>
+	  </div>
 	</div>
 	<div class="span4">
-	  <p>However, I far prefer a more experimentally determined definition.</p>
-	  <p>Currently, "bieber" is mentioned on twitter approximately once every <span>Foo</span> seconds</p>
-	  <p>By this definition, you are around <span>Foo</span> biebers old. This far smaller unit can more sensibly be used to measure smaller time quantities like:
-	  <dl>
-	  </dl>
+	  <p>However, I far prefer a more experimentally determined definition: </p>
+	  <p>Currently, the word "bieber" is mentioned on twitter approximately once every <span data-bind="text: bieberRate"></span> seconds. Let's call this the bieber-rate.</p>
+	  <div data-bind="visible: haveMiniBieberAge">
+	    <p>By this definition, you are around <span data-bind="text: userAgeInMiniBiebers"></span> biebers old.
+	  </div>
 	  </p>
 	</div>
       </div>
