@@ -20,35 +20,27 @@ function withUnits(num) {
     }
 }
 
-function BieberAppModel() {
-    this.SECONDS_PER_YEAR = (365 * 24 * 60 * 60);
-    this.MILLIS_PER_YEAR = (this.SECONDS_PER_YEAR * 1000.0);
+function setUpTangle() {
+    var root = document.getElementById("root");
 
-    this.bieberBornAt = Date.parse("Tue, 1 Mar 1994 00:00:00 GMT"); // I honestly don't know what hour
-    this.currentTime = new Date();
-    this.bieberAge = Math.floor((this.currentTime - this.bieberBornAt) / this.MILLIS_PER_YEAR);
+    var SECONDS_PER_YEAR = (365 * 24 * 60 * 60);
+    var MILLIS_PER_YEAR = (SECONDS_PER_YEAR * 1000.0);
 
-    this.userAge = ko.observable();
-    this.haveValidUserAge = ko.observable(false);
-    this.validUserAge = ko.computed(function() {
-	var validAge = parseFloat(this.userAge());
-	if (validAge && validAge > 0) {
-	    this.haveValidUserAge(true);
-	    return validAge;
-	} else {
-	    this.haveValidUserAge(false);
+    var tangle = new Tangle(root, {
+	ageNow: function(bornAt) {
+	    var currentTime = new Date();
+	    return Math.floor((currentTime - bornAt) / MILLIS_PER_YEAR);
+	},
+
+	initialize: function() {
+	    this.bieberAge = this.ageNow(Date.parse("Tue, 1 Mar 1994 00:00:00 GMT")); // I honestly don't know what hour
+	    this.userAge = this.ageNow(Date.parse("Fri, 14 Jun 1974 00:00:00 GMT"));
+	    this.bieberRate = 30;
+	},
+
+	update: function() {
+	    this.userAgeInBigBiebers = Math.floor(this.userAge / this.bieberAge);
+	    this.userAgeInMiniBiebers = Math.floor((this.userAge * SECONDS_PER_YEAR) / this.bieberRate);
 	}
-    }, this)
-
-    this.userAgeInBigBiebers = ko.computed(function() {
-	return Math.floor(this.validUserAge() / this.bieberAge);
-    }, this);
-
-    this.bieberRate = ko.observable(30);
-    this.userAgeInMiniBiebers = ko.computed(function() {
-	var biebers = Math.floor((this.validUserAge() * this.SECONDS_PER_YEAR) / this.bieberRate());
-	return withUnits(biebers);
-    }, this);
+    });
 }
-
-ko.applyBindings(new BieberAppModel());

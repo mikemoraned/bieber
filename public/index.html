@@ -11,6 +11,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/css/bieber.css" rel="stylesheet">
+    <link href="/css/TangleKit/TangleKit.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -18,53 +19,34 @@
     <![endif]-->
   </head>
 
-  <body>
-    <div class="container">
+  <body onload="setUpTangle();">
+    <div id="root" class="container">
       <div class="row">
-	<div class="span12">
-	  <h1 style="text-align: center;">What is a Bieber?</h1>
-	</div>
-      </div>
-      <div class="row waffle">
-	<div class="span4 offset4" style="text-align: justify">
-	  <p>Some people have recently been using a 'bieber' as a unit of time, based on Mr Biebers current age (<span data-bind="text: bieberAge"></span>). I call this the <em>Mr Bieber definition</em>.</p>
-	  <p>To illustrate, how old are you? <br /><input data-bind="value: userAge" placeholder="Your age in years"/></p>
-	  <div data-bind="visible: haveValidUserAge" style="display: none" class="alert alert-info">
-	    <p>By the above definition, you are around <span data-bind="text: userAgeInBigBiebers"></span> bieber<span data-bind="visible: (userAgeInBigBiebers() !== 1)">s</span> old. <span data-bind="visible: (userAgeInBigBiebers() > 2)">Depressing, no?</span></p>
-	  </div>
-
-	  <p>I far prefer a more experimentally determined definition: </p>
-	  <p>Currently, the word "bieber" is mentioned on twitter roughly once every <span data-bind="text: bieberRate"></span> seconds. Let's say this corresponds to a single bieber-unit.</p>
-	  <p>We can then build up larger time intervals using standard SI units. I call this the <em>SI Bieber definition</em>.</p>
-	  <div data-bind="visible: haveValidUserAge" style="display: none" class="alert alert-info">
-	    <p>By the above definition, your age is around <span data-bind="text: Math.floor(userAgeInMiniBiebers().value)"></span> <span data-bind="text: userAgeInMiniBiebers().unit"></span>biebers.
-	    </p>
-	  </div>
-	</div>
-      </div>
-      <div class="row choice">
-	<div class="span12">
-	  <h1 id="question">Which do you prefer?</h1>
-	  <div class="row">
-	    <div class="span4 offset2" style="text-align: right">
-	      <p>
-	      <a href="http://clicktotweet.com/0VJQr" class="btn btn-primary btn-large">#mrbieber</a>
-	      </p>
-	    </div>
-	    <div class="span6">
-	      <p>
-		<a href="http://clicktotweet.com/hL3tC" class="btn btn-primary btn-large">#sibieber</a>
-	      </p>
-	    </div>
-	  </div>
-	</div>
+	<h1>What is a Bieber?</h1>
+	<p>Some people have recently been using a 'bieber' as a unit of time, based on Mr Biebers current age (<span data-var="bieberAge"></span>). I call this the <em>Mr Bieber definition</em>.</p>
+	<p>To illustrate, if you are <span data-var="userAge" class="TKAdjustableNumber" data-min="1" data-max="1000"> years old</span>, then by the above definition, you are around <span data-var="userAgeInBigBiebers"> biebers</span> old.</p>
+	<p>I far prefer a more experimentally determined definition. Currently, the word "bieber" is mentioned on twitter
+	roughly once every <span data-var="bieberRate"> seconds</span>. Let's say this corresponds to a single bieber-unit. We can then build up larger time intervals using standard SI units. I call this the <em>SI Bieber definition</em>.</p>
+	<p>By the above definition, if you are <span data-var="userAge" class="TKAdjustableNumber" data-min="1" data-max="1000"> years old</span>, then your age is around <span data-var="userAgeInMiniBiebers"></span> foo</span>.
+	</p>
+	<h1 id="question">Which do you prefer?</h1>
+	<p>
+	<a href="http://clicktotweet.com/0VJQr" class="btn btn-primary btn-large">#mrbieber</a>
+	or
+	<a href="http://clicktotweet.com/hL3tC" class="btn btn-primary btn-large">#sibieber</a>
+	</p>
       </div>
     </div> <!-- /container -->
     
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/knockout.js"></script>
+    <script src="/js/Tangle.js"></script>
     <script src="/js/bieber.js"></script>
 
+    <script src="/js/TangleKit/mootools.js"></script>
+    <script src="/js/TangleKit/sprintf.js"></script>
+    <script src="/js/TangleKit/BVTouchable.js"></script>
+    <script src="/js/TangleKit/TangleKit.js"></script>
+    
   </body>
 </html>
