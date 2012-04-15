@@ -56,3 +56,5 @@ function setUpTangle() {
 	}
     });
 }
+
+$("a[rel='popover']").popover();
