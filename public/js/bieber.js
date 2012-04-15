@@ -1,4 +1,4 @@
-function withUnits(num) {
+Tangle.formats.sibiebers = function (value) {
     var unitForPower = {
 	0: { name: '',      divisor: 1 },
 	1: { name: 'deca',  divisor: 10 },
@@ -7,17 +7,12 @@ function withUnits(num) {
 	6: { name: 'mega',  divisor: 1000000 },
 	9: { name: 'giga',  divisor: 1000000000 }
     };
-    if (num) {
-	var power = Math.floor(Math.log(num) / Math.log(10));
-	while (power > 0 && !unitForPower[power]) {
-	    power = power - 1;
-	}
-	var unit = unitForPower[power];
-	return { value: num / unit.divisor, unit: unit.name };
+    var power = Math.floor(Math.log(value) / Math.log(10));
+    while (power > 0 && !unitForPower[power]) {
+	power -= 1;
     }
-    else {
-	return { value: num, unit: '' };
-    }
+    var unit = unitForPower[power];
+    return value / unit.divisor + " " + unit.name + "biebers";
 }
 
 function setUpTangle() {
@@ -40,7 +35,7 @@ function setUpTangle() {
 
 	update: function() {
 	    this.userAgeInBigBiebers = Math.floor(this.userAge / this.bieberAge);
-	    this.userAgeInMiniBiebers = Math.floor((this.userAge * SECONDS_PER_YEAR) / this.bieberRate);
+	    this.userAgeInSIBiebers = Math.floor((this.userAge * SECONDS_PER_YEAR) / this.bieberRate);
 	}
     });
 }
