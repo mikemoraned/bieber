@@ -1,3 +1,19 @@
+Tangle.formats.age = function (value) {
+    if (value === 1) {
+	return value + " year";
+    } else {
+	return value + " years";
+    }
+}
+
+Tangle.formats.mrbiebers = function (value) {
+    if (value === 1) {
+	return value + " bieber";
+    } else {
+	return value + " biebers";
+    }
+}
+
 Tangle.formats.sibiebers = function (value) {
     var unitForPower = {
 	0: { name: '',      divisor: 1 },
@@ -12,7 +28,8 @@ Tangle.formats.sibiebers = function (value) {
 	power -= 1;
     }
     var unit = unitForPower[power];
-    return value / unit.divisor + " " + unit.name + "biebers";
+    var displayedValue = Math.floor(value / unit.divisor);
+    return displayedValue + " " + unit.name + "bieber" + (displayedValue === 1 ? "" : "s" );
 }
 
 function setUpTangle() {
@@ -34,7 +51,7 @@ function setUpTangle() {
 	},
 
 	update: function() {
-	    this.userAgeInBigBiebers = Math.floor(this.userAge / this.bieberAge);
+	    this.userAgeInMrBiebers = Math.floor(this.userAge / this.bieberAge);
 	    this.userAgeInSIBiebers = Math.floor((this.userAge * SECONDS_PER_YEAR) / this.bieberRate);
 	}
     });
