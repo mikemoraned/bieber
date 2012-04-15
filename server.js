@@ -1,4 +1,9 @@
-var express = require('express');
+require.paths.unshift('lib');
+
+var express = require('express'),
+    fh = require('firehose');
+
+fh.wordrate("bieber");
 
 var app = express.createServer(express.logger());
 
